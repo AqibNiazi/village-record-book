@@ -1,81 +1,210 @@
-import React from "react";
+import React, { useState } from "react";
 import { PiChartBarHorizontal } from "react-icons/pi";
 import { FaRegFileAlt } from "react-icons/fa";
 import { BiSearchAlt } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { FaPlus } from "react-icons/fa6";
+import { v4 as uuidv4 } from "uuid";
 import { TiArrowUnsorted } from "react-icons/ti";
 import { FaRegCopy } from "react-icons/fa6";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Agriculture } from "@components/icons";
+import { Pagination } from "antd";
+import { Dropdown, Menu } from "antd";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import {
+  Agriculture,
+  Sport,
+  Plane,
+  Warning,
+  BusinessLine,
+  HeartHand,
+  GraduationHat,
+  ActivityHeart,
+  Train,
+  GovtService,
+  Location,
+  GovtTownCity,
+  Coins,
+  WardMarket,
+  CheckList,
+  Villages,
+  Clan,
+} from "@components/icons";
+import { useLocation } from "react-router-dom";
+import NavigationTab from "@components/DataTable/NavigationTab";
+
 const Dashboard = () => {
-  const sidebar = [
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState(1);
+  const [activeButton, setActiveButton] = useState("data");
+  const [current, setCurrent] = useState(3);
+  const items = [
     {
+      key: "1",
+      label: <span>A to Z</span>,
+    },
+    {
+      key: "2",
+      label: <span>Z to A</span>,
+    },
+    {
+      key: "3",
+      label: <span>Last Updated</span>,
+    },
+  ];
+  const [selectedKey, setSelectedKey] = useState("1");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleMenuClick = (e) => {
+    setSelectedKey(e.key);
+  };
+
+  const handleDropdownVisibleChange = (flag) => {
+    setIsOpen(flag);
+  };
+
+  const selectedItem = items.find((item) => item.key === selectedKey);
+
+  const onChange = (page) => {
+    console.log(page);
+    setCurrent(page);
+  };
+  const sidebarData = [
+    {
+      id: uuidv4(),
       icon: <FiUsers className="w-4 h-4" />,
+      link: "/",
       text: "Ward Population",
     },
     {
-      icon: <Agriculture className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Agriculture className="w-5 h-5" />,
+      link: "/",
       text: "Agriculture",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Sport className="w-5 h-5" />,
+      link: "/",
       text: "Sports",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Plane className="w-5 h-5" />,
+      link: "/",
       text: "Tourism",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Warning className="w-5 h-5" />,
+      link: "/",
       text: "Cross Cutting Issues",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <BusinessLine className="w-5 h-5" />,
+      link: "/",
       text: "Business Activity",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <HeartHand className="w-5 h-5" />,
+      link: "/",
       text: "Communication Facilities",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <HeartHand className="w-5 h-5" />,
+      link: "/",
       text: "Community Projects",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <GraduationHat className="w-5 h-5" />,
+      link: "/",
       text: "Education",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <ActivityHeart className="w-5 h-5" />,
+      link: "/",
       text: "Health",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Train className="w-5 h-5" />,
+      link: "/",
       text: "Transport",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <GovtService className="w-5 h-5" />,
+      link: "/",
       text: "Government Services",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Location className="w-5 h-5" />,
+      link: "/",
       text: "Government Station",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <GovtTownCity className="w-5 h-5" />,
+      link: "/",
       text: "Government Town City",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <Coins className="w-5 h-5" />,
+      link: "/",
       text: "Ward's Assets",
     },
     {
-      icon: <FiUsers className="w-4 h-4" />,
+      id: uuidv4(),
+      icon: <WardMarket className="w-5 h-5" />,
+      link: "/",
       text: "Ward's Markets",
     },
+    {
+      id: uuidv4(),
+      icon: <WardMarket className="w-5 h-5" />,
+      link: "/",
+      text: "Ward's Movement",
+    },
+    {
+      id: uuidv4(),
+      icon: <CheckList className="w-5 h-5" />,
+      link: "/",
+      text: "Ward's Visitor Registration",
+    },
+    {
+      id: uuidv4(),
+      icon: <Villages className="w-5 h-5" />,
+      text: "Villages",
+    },
+    {
+      id: uuidv4(),
+      icon: <Clan className="w-5 h-5" />,
+      link: "/",
+      text: "Clans",
+    },
   ];
+  console.log("active item", activeItem);
+  // Determine active sidebar item based on current pathname
+  const getActiveItem = () => {
+    for (const sidebar of sidebarData) {
+      if (location.pathname.startsWith(sidebar.link)) {
+        return sidebar;
+      }
+    }
+    // Return default if no match found (though this scenario shouldn't occur based on provided data)
+    return sidebarData[0];
+  };
+
+  // Get active sidebar item
+  // const activeItem = getActiveItem();
 
   const buttonsList = [
     {
@@ -111,13 +240,27 @@ const Dashboard = () => {
   return (
     <div className="flex justify-between">
       <main className="w-full flex justify-between">
-        <aside className="w-full h-full max-w-[16rem] border-r border-gray-200 px-2 sm:px-6 lg:px-8 py-4">
+        <aside className="w-full h-full max-w-xs border-r border-gray-200 px-2 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-center gap-2 font-vietnam mb-4">
-            <button className="rounded-lg px-3 py-2 hover:border text-base hover:bg-lightOrange  hover:border-brownish flex items-center text-grayish hover:text-brownish">
+            <button
+              onClick={() => setActiveButton("data")}
+              className={`rounded-lg px-3 py-2 text-base flex items-center ${
+                activeButton === "data"
+                  ? "text-brownish bg-lightOrange border-brownish"
+                  : "text-grayish hover:text-brownish hover:bg-lightOrange hover:border hover:border-brownish"
+              }`}
+            >
               <PiChartBarHorizontal className="mr-2 w-6 h-6" />
               <span className="font-vietnam">Data</span>
             </button>
-            <button className="rounded-lg px-3 py-2 hover:border text-base hover:bg-lightOrange hover:border-brownish flex items-center text-grayish hover:text-brownish">
+            <button
+              onClick={() => setActiveButton("forms")}
+              className={`rounded-lg px-3 py-2 text-base flex items-center ${
+                activeButton === "forms"
+                  ? "text-brownish bg-lightOrange border-brownish"
+                  : "text-grayish hover:text-brownish hover:bg-lightOrange hover:border hover:border-brownish"
+              }`}
+            >
               <FaRegFileAlt className="mr-2 w-5 h-5" />
               <span className="font-vietnam">Forms</span>
             </button>
@@ -137,15 +280,23 @@ const Dashboard = () => {
             </div>
           </form>
           <ul>
-            {sidebar?.map((item) => (
-              <li className="flex items-center px-3 py-2 mb-2 font-vietnam text-grayish hover:text-brownish hover:bg-lightOrange rounded-md">
+            {sidebarData?.map((item, index) => (
+              <li
+                key={item.id}
+                className={`flex items-center px-3 py-2 mb-2 font-vietnam  rounded-md cursor-pointer ${
+                  index === activeItem
+                    ? " bg-lightOrange text-brownish"
+                    : " text-grayish hover:bg-lightOrange"
+                }`}
+                onClick={() => setActiveItem(index)}
+              >
                 <span className="mr-2">{item?.icon}</span>
                 <span className="text-sm">{item?.text}</span>
               </li>
             ))}
           </ul>
         </aside>
-        <section className="w-full px-6 py-4">
+        <section className="w-full px-8 py-4">
           <div className="w-full mb-4">
             <h1 className="text-3xl font-vietnam font-semibold text-blackish mb-4">
               Ward Population
@@ -169,33 +320,48 @@ const Dashboard = () => {
           </div>
           <div>
             <form className="flex items-center mb-4">
-              <div className="relative w-full text-lightgray hover:text-brownish mr-2">
+              <div className="relative w-full text-grayish hover:text-brownish mr-2">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
                   <BiSearchAlt className="w-5 h-5 " />
                 </div>
                 <input
                   type="text"
                   id="simple-search"
-                  className="text-sm rounded-lg w-full ps-8 p-2.5 placeholder:text-lightgray hover:placeholder:text-brownish border border-lightgray hover:border-brownish"
+                  className="text-sm rounded-lg w-full ps-8 p-2 focus:outline-none placeholder:text-grayish hover:placeholder:text-brownish border border-lightgray hover:border-brownish"
                   placeholder="Search here"
                   required=""
                 />
               </div>
-              <select
-                id="countries"
-                className="text-brownish bg-lightOrange text-sm rounded-lg w-full max-w-20  p-2.5"
+              <Dropdown
+                overlay={
+                  <Menu onClick={handleMenuClick}>
+                    {items.map((item) => (
+                      <Menu.Item key={item.key}>{item.label}</Menu.Item>
+                    ))}
+                  </Menu>
+                }
+                placement="bottomRight"
+                onVisibleChange={handleDropdownVisibleChange}
               >
-                <option selected="">A-Z</option>
-                <option value="">Z-A</option>
-              </select>
+                <button className="flex items-center rounded-lg w-full max-w-max py-2 px-3 text-brownish border border-brownish bg-lightOrange">
+                  <span className="mr-1 text-sm font-vietnam">
+                    {selectedItem?.label}
+                  </span>
+                  {isOpen ? (
+                    <FaChevronUp className="text-inherit" />
+                  ) : (
+                    <FaChevronDown className="text-inherit" />
+                  )}
+                </button>
+              </Dropdown>
             </form>
           </div>
 
           {/*Tables */}
-          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
+          <div className="relative overflow-x-auto shadow-md ">
+            <table className="w-full text-sm  rtl:text-right text-gray-500">
+              <thead className="text-xs uppercase text-grayish bg-gray-50">
+                <tr className="">
                   <th className="px-6 py-3">
                     <div className="w-full flex items-center justify-center">
                       <span>First Name</span>
@@ -222,14 +388,14 @@ const Dashboard = () => {
               </thead>
 
               <tbody>
-                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                  <td className="px-6 py-4">John</td>
-                  <td className="px-6 py-4">Doe</td>
-                  <td className="px-6 py-4">Male</td>
-                  <td className="px-6 py-4">21 Jun 2022</td>
-                  <td className="px-6 py-4">Yesterday</td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center">
+                <tr className="bg-white border-b text-blackish font-vietnam text-base">
+                  <td className="px-6 py-4 text-center">John</td>
+                  <td className="px-6 py-4 text-center">Doe</td>
+                  <td className="px-6 py-4 text-center">Male</td>
+                  <td className="px-6 py-4 text-center">21 Jun 2022</td>
+                  <td className="px-6 py-4 text-center">Yesterday</td>
+                  <td className="px-6 py-4 text-center">
+                    <div className="flex items-center justify-center">
                       <span className="mr-1">101111111</span>
                       <FaRegCopy />
                     </div>
@@ -242,81 +408,9 @@ const Dashboard = () => {
                   </td>
                 </tr>
               </tbody>
+              <tfoot></tfoot>
             </table>
-            <nav
-              className="flex items-center flex-column flex-wrap md:flex-row justify-between px-6 py-4"
-              aria-label="Table navigation"
-            >
-              <span className="text-sm font-normal text-gray-500 dark:text-gray-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">
-                Showing{" "}
-                <span className="font-semibold text-gray-900 dark:text-white">
-                  1-10
-                </span>{" "}
-                of{" "}
-                <span className="font-semibold text-gray-900 dark:text-white">
-                  1000
-                </span>
-              </span>
-              <ul className="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    Previous
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    1
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    2
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    aria-current="page"
-                    className="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                  >
-                    3
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    4
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    5
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    Next
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            <NavigationTab />
           </div>
         </section>
       </main>

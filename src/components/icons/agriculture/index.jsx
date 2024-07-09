@@ -1,11 +1,12 @@
 import React from "react";
 
-const Agriculture = ({ width = 20, height = 20, color = "currentColor" }) => (
+const Agriculture = ({ className, color = "currentColor" }) => (
   <svg
-    width={width}
-    height={height}
+    width="20"
+    height="20"
     viewBox="0 0 20 20"
     fill="none"
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
