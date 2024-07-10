@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Agriculture from "@components/icons/Agriculture";
-import Phone from "./Phone";
+import Phone from "@components/icons/Phone";
 import Plane from "@components/icons/Plane";
 import Sport from "@components/icons/Sport";
 import Warning from "@components/icons/Warning";
