@@ -10,31 +10,33 @@ import { FaPlus } from "react-icons/fa6";
 import NavigationTab from "@components/DataTable/NavigationTab";
 import { useLocation } from "react-router-dom";
 const WardPopulation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const [current, setCurrent] = useState(3);
-  const onChange = (page) => {
-    console.log(page);
-    setCurrent(page);
-  };
-  const handleMenuClick = (e) => {
-    setSelectedKey(e.key);
-  };
-  const items = [
-    {
-      key: "1",
-      label: <span>A to Z</span>,
-    },
-    {
-      key: "2",
-      label: <span>Z to A</span>,
-    },
-    {
-      key: "3",
-      label: <span>Last Updated</span>,
-    },
-  ];
-  const [selectedKey, setSelectedKey] = useState("1");
+    const [selectedKey, setSelectedKey] = useState("1");
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const [current, setCurrent] = useState(3);
+    const items = [
+      {
+        key: "1",
+        label: <span>A to Z</span>,
+      },
+      {
+        key: "2",
+        label: <span>Z to A</span>,
+      },
+      {
+        key: "3",
+        label: <span>Last Updated</span>,
+      },
+    ];
+    const onChange = (page) => {
+      console.log(page);
+      setCurrent(page);
+    };
+    const handleMenuClick = (e) => {
+      setSelectedKey(e.key);
+    };
+
+
 
   const handleDropdownVisibleChange = (flag) => {
     setIsOpen(flag);

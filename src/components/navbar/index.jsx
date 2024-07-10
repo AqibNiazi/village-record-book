@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 const Navbar = () => {
   const dispatch = useDispatch();
   return (
-    <div className="bg-primary">
+    <div className="bg-primary ">
       <header className=" px-2 sm:px-6 lg:px-8 text-blackish  flex justify-between  text-sm py-2 md:py-4">
         <button
           data-drawer-target="logo-sidebar"

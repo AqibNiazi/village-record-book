@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Avatar from "@assets/avatar.png";
+
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -36,7 +37,7 @@ const UserProfile = () => {
       <button
         id="dropdownAvatarNameButton"
         data-dropdown-toggle="dropdownAvatarName"
-        className={`flex items-center text-sm pe-1 font-medium rounded-full hover:text-primary`}
+        className={`flex items-center focus:outline-none text-sm pe-1 font-medium rounded-full hover:text-primary`}
         type="button"
         onClick={toggleDropdown}
         onBlur={handleFocusChange}
@@ -47,8 +48,8 @@ const UserProfile = () => {
           src={Avatar}
           alt="user avatar"
         />
-        <div className=" hidden md:flex flex-col items-start mr-3 ">
-          <span className="text-base font-vietnam text-blackish ">
+        <div className="hidden md:flex flex-col items-start mr-3">
+          <span className="text-base font-vietnam text-blackish">
             justin j.
           </span>
           <span className="text-xs font-vietnam text-grayish">Ward</span>
@@ -63,18 +64,17 @@ const UserProfile = () => {
       {isOpen && (
         <div
           id="dropdownAvatarName"
-          className="absolute mt-2 top-full left-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md shadow-gray-300 w-full"
+          className="absolute right-0 mt-2 top-full z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md shadow-gray-300"
           ref={dropdownRef}
         >
           <ul
-            className="text-sm text-black w-full"
-            aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
+            className="text-sm text-blackish w-40"
+            aria-labelledby="dropdownAvatarNameButton"
           >
             {menuItems.map((menuItem, index) => (
               <li key={index} className="border-b border-gray-300">
                 <Link
-                  // to={menuItem.to}
-                  className="flex justify-center p-2 font-normal font-vietnam text-blackish"
+                  className="block w-full text-left p-2 font-normal font-vietnam text-blackish"
                   onClick={() => {
                     setIsOpen(false);
                     if (menuItem.onClick) {
@@ -92,4 +92,5 @@ const UserProfile = () => {
     </div>
   );
 };
+
 export default UserProfile;
