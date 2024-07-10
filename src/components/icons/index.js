@@ -1,5 +1,5 @@
 import Agriculture from "@components/icons/Agriculture";
-import Phone from "./Phone";
+import Phone from "@components/icons/Phone";
 import Plane from "@components/icons/Plane";
 import Sport from "@components/icons/Sport";
 import Warning from "@components/icons/Warning";
