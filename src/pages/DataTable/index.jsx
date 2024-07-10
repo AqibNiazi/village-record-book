@@ -6,23 +6,26 @@ import { FiUsers } from "react-icons/fi";
 import { v4 as uuidv4 } from "uuid";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Agriculture from "@components/icons/Agriculture";
-import Plane from "@components/icons/Plane";
-import Sport from "@components/icons/Sport";
-import Warning from "@components/icons/Warning";
-import BusinessLine from "@components/icons/BusinessLine";
-import HeartHand from "@components/icons/HeartHand";
-import GraduationHat from "@components/icons/GraduationHat";
-import ActivityHeart from "@components/icons/ActivityHeart";
-import Train from "@components/icons/Train";
-import GovtService from "@components/icons/GovtService";
-import Location from "@components/icons/Location";
-import GovtTownCity from "@components/icons/GovtTownCity";
-import WardMarket from "@components/icons/WardMarket";
-import Coins from "@components/icons/Coins";
-import CheckList from "@components/icons/CheckList";
-import Villages from "@components/icons/Villages";
-import Clan from "@components/icons/Clan";
+import {
+  Agriculture,
+  Sport,
+  Phone,
+  Plane,
+  Warning,
+  BusinessLine,
+  HeartHand,
+  GraduationHat,
+  ActivityHeart,
+  Train,
+  GovtService,
+  Location,
+  GovtTownCity,
+  Coins,
+  WardMarket,
+  CheckList,
+  Villages,
+  Clan,
+} from "@components/icons";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -68,7 +71,7 @@ const Dashboard = () => {
     },
     {
       id: uuidv4(),
-      icon: <HeartHand className="w-5 h-5" />,
+      icon: <Phone className="w-5 h-5" />,
       link: "/population",
       text: "Communication Facilities",
     },
@@ -167,7 +170,7 @@ const Dashboard = () => {
   const activeItem = getActiveItem();
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row ">
       <aside
         className={`fixed  md:static z-40 md:z-0 w-full h-full max-w-72 md:max-w-[16rem] lg:max-w-xs bg-white border-r border-gray-200 px-2 sm:px-6 lg:px-8 py-4 transition-transform transform ${
           isSidebarVisible

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Menu, Pagination } from "antd";
+import { Dropdown, Pagination } from "antd";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const entryOptions = [
@@ -25,27 +25,35 @@ const EntriesDropdown = () => {
     setSelectedKey(e.key);
   };
 
-  const handleDropdownVisibleChange = (flag) => {
+  const handleDropdownOpenChange = (flag) => {
     setIsOpen(flag);
   };
 
   const selectedItem = entryOptions.find((item) => item.key === selectedKey);
 
+  const menu = {
+    items: entryOptions.map((item) => ({
+      key: item.key,
+      label: item.label,
+    })),
+    onClick: handleMenuClick,
+  };
+
   return (
     <Dropdown
-      overlay={
-        <Menu onClick={handleMenuClick}>
-          {entryOptions.map((item) => (
-            <Menu.Item key={item.key}>{item.label}</Menu.Item>
-          ))}
-        </Menu>
-      }
+      menu={menu}
       placement="bottomRight"
-      onVisibleChange={handleDropdownVisibleChange}
+      onOpenChange={handleDropdownOpenChange}
     >
-      <button className="flex items-center rounded-lg w-full max-w-max py-1 px-2 bg-lightgray">
-        <span className="mr-1 text-blackish"> {selectedItem?.label}</span>{" "}
-        {isOpen ? <FaChevronUp /> : <FaChevronDown />}
+      <button className="flex items-center rounded w-full max-w-max py-1 px-2 text-grayish  bg-lightgray">
+        <span className="mr-1 text-sm font-vietnam text-blackish">
+          {selectedItem?.label}
+        </span>
+        {isOpen ? (
+          <FaChevronUp className="text-inherit" />
+        ) : (
+          <FaChevronDown className="text-inherit" />
+        )}
       </button>
     </Dropdown>
   );

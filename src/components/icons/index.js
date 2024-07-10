@@ -1,4 +1,5 @@
 import Agriculture from "@components/icons/Agriculture";
+import Phone from "./Phone";
 import Plane from "@components/icons/Plane";
 import Sport from "@components/icons/Sport";
 import Warning from "@components/icons/Warning";
@@ -17,6 +18,7 @@ import Villages from "@components/icons/Villages";
 import Clan from "@components/icons/Clan";
 export {
   Agriculture,
+  Phone,
   Plane,
   Sport,
   Warning,

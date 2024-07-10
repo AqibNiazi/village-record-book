@@ -74,7 +74,7 @@ const UserProfile = () => {
             {menuItems.map((menuItem, index) => (
               <li key={index} className="border-b border-gray-300">
                 <Link
-                  className="block w-full text-left p-2 font-normal font-vietnam text-blackish"
+                  className="block w-full text-center text-sm p-2 font-normal font-vietnam text-blackish"
                   onClick={() => {
                     setIsOpen(false);
                     if (menuItem.onClick) {

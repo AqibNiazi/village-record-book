@@ -10,7 +10,6 @@ export default defineConfig({
       "@assets": path.resolve(__dirname, "src/assets"),
       "@layout": path.resolve(__dirname, "src/layout"),
       "@store": path.resolve(__dirname, "src/store"),
-      // add more aliases as needed
     },
   },
 });
