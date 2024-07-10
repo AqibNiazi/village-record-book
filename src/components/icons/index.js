@@ -1,4 +1,3 @@
-import BarChart from "./BarChart";
 import Agriculture from "./Agriculture";
 import Plane from "./Plane";
 import Sport from "./Sport";
@@ -17,7 +16,6 @@ import CheckList from "./CheckList";
 import Villages from "./Villages";
 import Clan from "./Clan";
 export {
-  BarChart,
   Agriculture,
   Plane,
   Sport,
