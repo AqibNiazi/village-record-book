@@ -25,7 +25,7 @@ import {
   CheckList,
   Villages,
   Clan,
-} from "@components/Icons";
+} from "@components/appIcons";
 
 const Dashboard = () => {
   const location = useLocation();
