@@ -43,7 +43,7 @@ const EntriesDropdown = () => {
       placement="bottomRight"
       onVisibleChange={handleDropdownVisibleChange}
     >
-      <button className="flex items-center rounded-lg w-full max-w-max py-1 px-2   bg-lightgray">
+      <button className="flex items-center rounded-lg w-full max-w-max py-1 px-2 bg-lightgray">
         <span className="mr-1 text-blackish"> {selectedItem?.label}</span>{" "}
         {isOpen ? <FaChevronUp /> : <FaChevronDown />}
       </button>
@@ -53,17 +53,14 @@ const EntriesDropdown = () => {
 
 const NavigationTab = ({ current, onChange }) => {
   return (
-    <nav className="flex items-center flex-column flex-wrap md:flex-row justify-between px-6 py-4">
-      <div className="flex text-sm items-center font-vietnam font-normal text-grayish  w-full max-w-xs">
+    <div className="w-full flex text-sm items-center flex-col md:flex-row justify-between font-vietnam font-normal text-grayish px-6 py-4">
+      <div className="flex items-center mb-4 md:mb-0">
         <span className="mr-2">Show</span>
-
         <EntriesDropdown />
         <span className="ml-2">entries</span>
       </div>
-      <div className="flex items-center">
-        <Pagination current={current} onChange={onChange} total={50} />
-      </div>
-    </nav>
+      <Pagination current={current} onChange={onChange} total={50} />
+    </div>
   );
 };
 

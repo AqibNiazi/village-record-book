@@ -5,53 +5,23 @@ import Avatar from "@assets/avatar.png";
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  //   const menuItems = [
-  //     {
-  //       to: "/my-profile",
-  //       icon: profile,
-  //       text: t("my_profile"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       to: "/my-ads",
-  //       icon: myAds,
-  //       text: t("my_ads"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       to: "/my-favourites",
-  //       icon: favourits,
-  //       text: t("favourites"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       to: "my-searches",
-  //       icon: mysearch,
-  //       text: t("my_searches"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       to: "/account-settings",
-  //       icon: settings,
-  //       text: t("account_settings"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       to: "/chats",
-  //       icon: chats,
-  //       text: t("chats"),
-  //       onClick: () => setIsOpen(false),
-  //     },
-  //     {
-  //       icon: logout,
-  //       text: t("logout"),
-  //       onClick: onLogout,
-  //     },
-  //   ];
+  const menuItems = [
+    {
+      to: "",
+      text: "My Profile",
+      onClick: () => setIsOpen(false),
+    },
+    {
+      to: "",
+      text: "Logout",
+      onClick: () => setIsOpen(false),
+    },
+  ];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
   const handleFocusChange = (event) => {
     if (
       dropdownRef.current &&
@@ -60,6 +30,7 @@ const UserProfile = () => {
       setIsOpen(false);
     }
   };
+
   return (
     <div className="relative">
       <button
@@ -72,37 +43,38 @@ const UserProfile = () => {
       >
         <span className="sr-only">Open user menu</span>
         <img
-          className="w-10 h-10 mr-2 rounded-full"
+          className="w-10 h-10 md:mr-2 rounded-full"
           src={Avatar}
           alt="user avatar"
         />
-        <div className="flex flex-col items-start mr-3">
+        <div className=" hidden md:flex flex-col items-start mr-3 ">
           <span className="text-base font-vietnam text-blackish ">
             justin j.
           </span>
           <span className="text-xs font-vietnam text-grayish">Ward</span>
         </div>
-        <IoIosArrowDown className="w-5 h-5" />
+        {isOpen ? (
+          <IoIosArrowUp className="w-5 h-5 hidden md:block" />
+        ) : (
+          <IoIosArrowDown className="w-5 h-5 hidden md:block" />
+        )}
       </button>
 
       {isOpen && (
         <div
           id="dropdownAvatarName"
-          className="absolute mt-2 top-full left-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md shadow-gray-300 w-48"
+          className="absolute mt-2 top-full left-0 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-md shadow-gray-300 w-full"
           ref={dropdownRef}
         >
           <ul
-            className="text-sm text-black"
+            className="text-sm text-black w-full"
             aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
           >
-            {/* {menuItems.map((menuItem, index) => (
-              <li
-                key={index}
-                className="border-b  font-Montserrat font-normal border-gray-300"
-              >
+            {menuItems.map((menuItem, index) => (
+              <li key={index} className="border-b border-gray-300">
                 <Link
-                  to={menuItem.to}
-                  className="flex justify-start items-center p-2"
+                  // to={menuItem.to}
+                  className="flex justify-center p-2 font-normal font-vietnam text-blackish"
                   onClick={() => {
                     setIsOpen(false);
                     if (menuItem.onClick) {
@@ -110,11 +82,10 @@ const UserProfile = () => {
                     }
                   }}
                 >
-                  <img src={menuItem.icon} alt={menuItem.text} />
-                  <span>{menuItem.text}</span>
+                  {menuItem.text}
                 </Link>
               </li>
-            ))} */}
+            ))}
           </ul>
         </div>
       )}
