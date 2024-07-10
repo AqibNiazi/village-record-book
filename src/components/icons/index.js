@@ -1,20 +1,20 @@
-import Agriculture from "./Agriculture";
-import Plane from "./Plane";
-import Sport from "./Sport";
-import Warning from "./Warning";
-import BusinessLine from "./BusinessLine";
-import HeartHand from "./HeartHand";
-import GraduationHat from "./GraduationHat";
-import ActivityHeart from "./ActivityHeart";
-import Train from "./Train";
-import GovtService from "./GovtService";
-import Location from "./Location";
-import GovtTownCity from "./GovtTownCity";
-import WardMarket from "./WardMarket";
-import Coins from "./Coins";
-import CheckList from "./CheckList";
-import Villages from "./Villages";
-import Clan from "./Clan";
+import Agriculture from "@components/icons/Agriculture";
+import Plane from "@components/icons/Plane";
+import Sport from "@components/icons/Sport";
+import Warning from "@components/icons/Warning";
+import BusinessLine from "@components/icons/BusinessLine";
+import HeartHand from "@components/icons/HeartHand";
+import GraduationHat from "@components/icons/GraduationHat";
+import ActivityHeart from "@components/icons/ActivityHeart";
+import Train from "@components/icons/Train";
+import GovtService from "@components/icons/GovtService";
+import Location from "@components/icons/Location";
+import GovtTownCity from "@components/icons/GovtTownCity";
+import WardMarket from "@components/icons/WardMarket";
+import Coins from "@components/icons/Coins";
+import CheckList from "@components/icons/CheckList";
+import Villages from "@components/icons/Villages";
+import Clan from "@components/icons/Clan";
 export {
   Agriculture,
   Plane,
